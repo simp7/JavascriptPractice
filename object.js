@@ -64,3 +64,47 @@ let ladder = {
 };
 
 ladder.up().up().down().showStep().up().showStep();
+
+let obj = {};
+function A() {
+    return obj;
+}
+
+function B() {
+    return obj;
+}
+
+let a = new A;
+let b = new B;
+console.log(a == b);
+
+function Calculator() {
+    this.read = function(a, b) {
+        this.n1 = a;
+        this.n2 = b;
+    }
+    this.sum = function() {
+        return this.n1 + this.n2;
+    }
+    this.mul = function() {
+        return this.n1 * this.n2;
+    }
+}
+
+let anotherCalculator = new Calculator();
+anotherCalculator.read(7, 3);
+
+console.log("Sum=" + anotherCalculator.sum());
+console.log("Mul=" + anotherCalculator.mul());
+
+function Accumulator(initialValue) {
+    this.value = initialValue
+    this.read = function(inserted) {
+        this.value += inserted;
+    }
+}
+
+let accumulator = new Accumulator(1);
+accumulator.read(3);
+accumulator.read(10);
+console.log(accumulator.value)
